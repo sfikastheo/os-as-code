@@ -1,15 +1,16 @@
-{ config, pkgs, ... }:
+{ pkgs, user, userdir, ... }:
 
 {
-  home.username = "sfikastheo";
-  home.homeDirectory = "/Users/sfikastheo";
-
+  home.username = "${user}";
+  home.homeDirectory = "${userdir}";
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
+    XDG_CONFIG_HOME = "$HOME/.config";
   };
 
-  imports = [ ./shell.nix ];
+  imports = [ ./config ];
 
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     # Archives
     xz
@@ -20,10 +21,7 @@
     # CLI utils
     fd
     jq
-    git
     wget
-    delta
-    git-lfs
     sshpass
     ripgrep
     television
@@ -73,7 +71,6 @@
     # Networking
     nmap
     socat
-    iproute2mac
 
     # Basics
     file
@@ -81,8 +78,17 @@
     which
     gnused
     gnutar
-  ];
 
+    # MacOs
+    maccy
+    rectangle
+    iproute2mac
+
+    # Ai
+    codex
+    gemini-cli
+    claude-code
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
