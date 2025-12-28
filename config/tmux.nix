@@ -7,17 +7,24 @@
     terminal = "screen-256color";
     historyLimit = 50000;
     focusEvents = true;
-    newSession = true;
     clock24 = true;
     keyMode = "vi";
     mouse = true;
 
-    plugins = with pkgs.tmuxPlugins; [ yank resurrect ];
+    plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = yank;
+        extraConfig = ''
+          set -g @yank_action 'copy-pipe'
+          set -g @yank_selection_mouse 'clipboard'
+          set -g @yank_with_mouse on
+        '';
+      }
+      resurrect
+    ];
 
     extraConfig = ''
-      ###############################
-      # General Settings
-      ###############################
+      # general Settings
       set -ga terminal-features "xterm-256color:RGB"
       set -g set-clipboard on
 
@@ -25,23 +32,18 @@
       set -g status-bg black
       set -g status-fg white
 
-      set -g @yank_action 'copy-pipe'
-      set -g @yank_selection_mouse 'clipboard'
-      set -g @yank_with_mouse on
-
-      # add scratch session
+      # scratch session
       bind t display-popup -E \
         -w 90% -h 90% \
         -d "#{pane_current_path}" \
         tmux new-session -A -s scratch
 
-      # Colemak-DH motions for pane navigation
+      # colemak-DH motions for pane navigation
       unbind h
       unbind j
       unbind k
       unbind l
-      unbind %
-      unbind "
+      unbind v
 
       bind m select-pane -L
       bind n select-pane -D
@@ -52,11 +54,12 @@
       bind l split-window -v
       bind k next-window
 
-      ###############################
-      # Copy mode
-      ###############################
+      # copy mode
       bind v copy-mode
       bind -T copy-mode-vi q send -X cancel
+      bind -T copy-mode-vi v send -X begin-selection
+      bind -T copy-mode-vi V send -X select-line
+      bind -T copy-mode-vi C-v send -X rectangle-toggle
 
       # unbind existing motions
       unbind -T copy-mode-vi h
