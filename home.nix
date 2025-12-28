@@ -27,7 +27,6 @@
     television
 
     # Terminal
-    tmux
     btop
     helix
     neovim
