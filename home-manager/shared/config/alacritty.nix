@@ -1,6 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 
-{
+let
+  isDarwin = pkgs.stdenv.isDarwin;
+  openCommand = if isDarwin then "open" else "xdg-open";
+  primaryMods = if isDarwin then "Command" else "Alt";
+in {
   xdg.configFile."alacritty/alacritty.toml".text = ''
     [font]
     size = 14
@@ -48,12 +52,12 @@
     save_to_clipboard = false
 
     [[hints.enabled]]
-    command = "open"
+    command = "${openCommand}"
     post_processing = true
     mouse.enabled = true
     hyperlinks = true
     persist = false
-    binding = { key = "H", mods = "Command" }
+    binding = { key = "O", mods = "${primaryMods}" }
     regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
 
     [hints]
@@ -61,10 +65,10 @@
 
     [keyboard]
     bindings = [
-      { key = "/", mods = "Command", action = "SearchForward" },
-      { key = "?", mods = "Command", action = "SearchBackward" },
+      { key = "/", mods = "${primaryMods}", action = "SearchForward" },
+      { key = "?", mods = "${primaryMods}", action = "SearchBackward" },
       # Vi mode bindings
-      { key = "V", mods = "Command|Shift", action = "ToggleViMode" },
+      { key = "V", mods = "${primaryMods}|Shift", action = "ToggleViMode" },
       { key = "L", mode = "Vi|~Search", action = "WordRightEnd" },
       { key = "K", mode = "Vi|~Search", action = "SearchNext" },
       { key = "K", mods = "Shift", mode = "Vi|~Search", action = "SearchPrevious" },
