@@ -4,10 +4,11 @@ let
   isDarwin = pkgs.stdenv.isDarwin;
   openCommand = if isDarwin then "open" else "xdg-open";
   primaryMods = if isDarwin then "Command" else "Alt";
+  fontSize = if isDarwin then "14" else "10";
 in {
   xdg.configFile."alacritty/alacritty.toml".text = ''
     [font]
-    size = 14
+    size = ${fontSize}
 
     [font.bold]
     family = "GeistMono Nerd Font Mono"
