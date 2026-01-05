@@ -24,6 +24,11 @@
       md = "mkdir -p";
       tmux = "tmux -2";
     };
+
+    initContent = ''
+      source "$HOME/Projects/secrets/wldrc"
+      source "$HOME/Projects/secrets/secrc"
+    '';
   };
 
   programs.fzf = {
