@@ -22,13 +22,10 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    # Networking
-    ldns
-
     # Basics
+    ldns
     openssh
     openssl
-    efitools
 
     # System tools
     lsof
@@ -59,12 +56,12 @@
 
     # Work
     slack
-    codex
     cachix
     zoom-us
     awscli2
     picocom
     mongosh
+    efitools
     sbsigntool
     cloudflared
     teleport_17
