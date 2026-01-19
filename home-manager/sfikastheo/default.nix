@@ -21,9 +21,9 @@
 
   home.packages = with pkgs; [
     # Applications
+    betterdisplay
     maccy
     rectangle
-    betterdisplay
 
     # System tools
     iproute2mac

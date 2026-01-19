@@ -28,47 +28,47 @@
     openssl
 
     # System tools
-    lsof
-    strace
-    ltrace
-    sysstat
     ethtool
-    pciutils
-    usbutils
     lm_sensors
+    lsof
+    ltrace
+    pciutils
+    strace
+    sysstat
+    usbutils
 
     # Containers
-    runc
     dive
+    fuse-overlayfs
     podman
     podman-compose
-    fuse-overlayfs
+    runc
 
     # Applications
+    alacritty
+    discord
     firefox
     foliate
-    discord
-    alacritty
-    tor-browser
-    signal-desktop
     podman-desktop
+    signal-desktop
+    tor-browser
     unstable.zed-editor
 
     # Work
-    slack
-    cachix
-    zoom-us
-    awscli2
-    picocom
-    mongosh
-    efitools
-    sbsigntool
-    cloudflared
-    teleport_17
-    _1password-gui
     _1password-cli
+    _1password-gui
+    awscli2
+    cachix
+    cloudflared
+    efitools
     mongodb-compass
+    mongosh
+    picocom
+    sbsigntool
+    slack
     ssm-session-manager-plugin
+    teleport_17
+    zoom-us
 
     # Fonts
     nerd-fonts.geist-mono

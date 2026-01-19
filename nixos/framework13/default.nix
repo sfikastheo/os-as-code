@@ -48,9 +48,8 @@
     variant = "colemak_dh_ortho";
   };
 
-  services.udev = {
-    # Remap CAPS to CTRL
-    extraHwdb = ''
+  services.udev.hwdb = {
+    "keyboard-remap" = ''
       evdev:atkbd:*
         KEYBOARD_KEY_3a=leftctrl
     '';
@@ -97,20 +96,20 @@
     wl-clipboard
 
     # Gnome
-    gnomeExtensions.clipboard-indicator
+    ddcutil
     gnome-calculator
     gnome-clocks
+    gnomeExtensions.clipboard-indicator
     nautilus
     papers
-    ddcutil
 
     # Packages
-    zsh
     file
-    lsof
     gnutar
-    vim-full
+    lsof
     usbutils
+    vim-full
+    zsh
   ];
 
   # Enable podman
@@ -119,6 +118,7 @@
     podman = {
       enable = true;
       dockerCompat = true;
+      dockerSocket.enable = true;
       defaultNetwork.settings.dns_enabled = true;
     };
   };
