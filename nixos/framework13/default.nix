@@ -48,12 +48,10 @@
     variant = "colemak_dh_ortho";
   };
 
-  services.udev.hwdb = {
-    "keyboard-remap" = ''
-      evdev:atkbd:*
-        KEYBOARD_KEY_3a=leftctrl
-    '';
-  };
+  services.udev.extraHwdb = ''
+    evdev:atkbd:*
+      KEYBOARD_KEY_3a=leftctrl
+  '';
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
