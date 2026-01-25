@@ -34,13 +34,60 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Gnome
+  #services = {
+  #  displayManager.gdm.enable = true;
+  #  desktopManager.gnome.enable = true;
+  #  gnome.core-developer-tools.enable = false;
+  #  gnome.core-apps.enable = false;
+  #  gnome.games.enable = false;
+  #};
+
+  # KDE
   services = {
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    gnome.core-developer-tools.enable = false;
-    gnome.core-apps.enable = false;
-    gnome.games.enable = false;
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
   };
+
+  environment.plasma6.excludePackages = with pkgs; [
+    kdePackages.elisa
+    kdePackages.kdepim-runtime
+    kdePackages.kmahjongg
+    kdePackages.kmines
+    kdePackages.konversation
+    kdePackages.kpat
+    kdePackages.ksudoku
+    kdePackages.ktorrent
+  ];
+
+  environment.systemPackages = with pkgs; [
+    # Wayland
+    wayland-utils
+    wl-clipboard
+
+    # KDE
+    kdePackages.kcalc
+    kdePackages.kclock
+    kdePackages.kcolorchooser
+    kdePackages.ksystemlog
+
+    # Gnome
+    # ddcutil
+    # gnome-calculator
+    # gnome-clocks
+    # gnomeExtensions.clipboard-indicator
+    # nautilus
+    # papers
+
+    # Packages
+    file
+    gnutar
+    lsof
+    usbutils
+    vim-full
+    zsh
+  ];
 
   # Configure keymap
   services.xserver.xkb = {
@@ -87,28 +134,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    # Wayland
-    wayland-utils
-    wl-clipboard
-
-    # Gnome
-    ddcutil
-    gnome-calculator
-    gnome-clocks
-    gnomeExtensions.clipboard-indicator
-    nautilus
-    papers
-
-    # Packages
-    file
-    gnutar
-    lsof
-    usbutils
-    vim-full
-    zsh
-  ];
 
   # Enable podman
   virtualisation = {

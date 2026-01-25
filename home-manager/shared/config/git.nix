@@ -1,17 +1,30 @@
-{ ... }:
+{ config, ... }:
 
 {
+  # TODO: move into `ssh` attrset
+  home.file.".ssh/allowed_signers".text = ''
+    sfikastheo  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINDhJ/rDsgb8o6xZ9F5kmVnWzpQtO0eRSNhANIiREvkb
+  '';
+
   programs.git = {
     enable = true;
     lfs.enable = true;
 
+    signing = {
+      format = "ssh";
+      signByDefault = true;
+      key = "${config.home.homeDirectory}/.ssh/signing_key";
+    };
+
     settings = {
+      init.defaultBranch = "main";
       user = {
         name = "sfikastheo";
         email = "theodore.sfikas@toolsforhumanity.com";
       };
 
-      init = { defaultBranch = "main"; };
+      gpg.ssh.allowedSignersFile =
+        "${config.home.homeDirectory}/.ssh/allowed_signers";
 
       merge = {
         tool = "nvimdiff";

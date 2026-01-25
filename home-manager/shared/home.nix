@@ -22,6 +22,7 @@
     bat
     devcontainer
     fd
+    gh
     jq
     ripgrep
     sshpass
@@ -75,6 +76,7 @@
     # Basics
     file
     gawk
+    gnupg
     gnused
     gnutar
     which
