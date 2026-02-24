@@ -49,6 +49,7 @@
     discord
     firefox
     foliate
+    spotify
     podman-desktop
     signal-desktop
     tor-browser
