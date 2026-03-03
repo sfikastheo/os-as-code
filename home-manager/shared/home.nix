@@ -6,7 +6,21 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     XDG_CONFIG_HOME = "$HOME/.config";
+    PNPM_HOME = "$HOME/.pnpm";
   };
+
+  home.sessionPath = [
+    "$HOME/.pnpm"
+    "$HOME/.bun/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/go/bin"
+    "$HOME/.local/bin"
+  ];
+
+  home.file.".npmrc".text = ''
+    store-dir=${userdir}/.pnpm/store
+    global-bin-dir=${userdir}/.pnpm
+  '';
 
   imports = [ ./config ];
 
@@ -56,6 +70,7 @@
     nil
     nixfmt-classic
     nodejs_24
+    pnpm
     prettierd
     pyright
     python314

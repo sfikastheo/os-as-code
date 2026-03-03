@@ -9,6 +9,10 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
+    ignores = [
+      ".worktrees/"
+      ".claude/"
+    ];
 
     signing = {
       format = "ssh";
@@ -112,12 +116,18 @@
         rba = "rebase --abort";
         rbs = "rebase --skip";
 
+        wta = "worktree add";
+        wtl = "worktree list";
+        wtr = "worktree remove";
+        wtm = "worktree move";
+
         br = "branch";
         brd = "branch -D";
         bru = "branch --set-upstream";
         brr =
           "!git branch --set-upstream-to=origin/$(git branch --show-current)";
       };
+
     };
   };
 
