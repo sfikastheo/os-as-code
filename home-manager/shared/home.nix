@@ -1,8 +1,6 @@
-{ pkgs, user, userdir, ... }:
+{ config, pkgs, ... }:
 
 {
-  home.username = "${user}";
-  home.homeDirectory = "${userdir}";
   home.sessionVariables = {
     EDITOR = "nvim";
     XDG_CONFIG_HOME = "$HOME/.config";
@@ -13,18 +11,16 @@
     "$HOME/.pnpm"
     "$HOME/.bun/bin"
     "$HOME/.cargo/bin"
-    "$HOME/go/bin"
     "$HOME/.local/bin"
   ];
 
   home.file.".npmrc".text = ''
-    store-dir=${userdir}/.pnpm/store
-    global-bin-dir=${userdir}/.pnpm
+    store-dir=${config.home.homeDirectory}/.pnpm/store
+    global-bin-dir=${config.home.homeDirectory}/.pnpm
   '';
 
   imports = [ ./config ];
 
-  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     # Archives
     unzip

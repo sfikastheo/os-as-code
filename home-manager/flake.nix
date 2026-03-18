@@ -13,13 +13,14 @@
     let
       system = "aarch64-darwin";
       user = "sfikastheo";
-      userdir = "/Users/sfikastheo/";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in {
       homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./${user} ];
-        extraSpecialArgs = { inherit user userdir; };
       };
     };
 }

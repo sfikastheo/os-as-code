@@ -2,8 +2,8 @@
 
 {
   home = {
-    username = "sfnix";
-    homeDirectory = "/home/sfnix";
+    username = "wsuser";
+    homeDirectory = "/home/wsuser";
     sessionVariables = {
       LANG = "en_US.UTF-8";
     };
@@ -46,32 +46,17 @@
     podman-compose
     runc
 
-    # Applications
-    alacritty
-    discord
-    firefox
-    foliate
-    spotify
-    podman-desktop
-    signal-desktop
-    tor-browser
-    unstable.zed-editor
-
     # Work
     _1password-cli
-    _1password-gui
     awscli2
     cachix
     cloudflared
     efitools
-    mongodb-compass
     mongosh
     picocom
     sbsigntool
-    slack
     ssm-session-manager-plugin
     teleport_17
-    zoom-us
 
     # Fonts
     nerd-fonts.geist-mono

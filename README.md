@@ -1,64 +1,54 @@
 ## OS as Code
 
-Declarative system configuration for NixOS and home-manager using Nix flakes.
+Declarative system configuration for NixOS and Home Manager using flakes.
 
-### Structure
+## Current topology
 
-```
-├── flake.nix                    # Main flake for NixOS system
-├── nixos/
-│   └── framework13/             # NixOS configuration for Framework 13
-├── home-manager/
-│   ├── flake.nix                # Separate flake for macOS home-manager
-│   ├── sfnix/                   # Linux user configuration
-│   ├── sfikastheo/              # macOS user configuration
-│   └── shared/                  # Shared configuration across systems
-```
+| Flake                    | Host/User              | Attribute                   | Config path                         |
+| ------------------------ | ---------------------- | --------------------------- | ----------------------------------- |
+| Root `flake.nix`         | Framework 13 (`sfnix`) | `.#fw13`                    | `nixos/nds` + `home-manager/sfnix`  |
+| Root `flake.nix`         | NUC (`wsuser`)         | `.#nuc01`                   | `nixos/ws1` + `home-manager/wsuser` |
+| `home-manager/flake.nix` | macOS (`sfikastheo`)   | `./home-manager#sfikastheo` | `home-manager/sfikastheo`           |
 
-### General Maintenance
+## Build the flake
 
 ```bash
-# Clean Old Generations
+# Based on the machine, the build attribute needs to differ
+# For NixOS, the available attributes are .#fw13 and .#nuc01
+
+sudo nixos-rebuild test --flake .#fw13||.#nuc01
+sudo nixos-rebuild build --flake .#fw13||.#nuc01
+sudo nixos-rebuild switch --flake .#fw13||.#nuc01
+
+# For macOS, only home-manager is used
+home-manager switch --flake ./home-manager#sfikastheo
+```
+
+## Common maintenance
+
+```bash
+# Clean old generations
 sudo nix-collect-garbage --delete-older-than 7d
 
-# Optimize Nix Store
+# Optimize store
 nix-store --optimise
 
-# Verify flake syntax and structure:
+# Validate flake outputs
 nix flake check
 
-# Update flake inputs (nixpkgs, home-manager, etc.):
+# Update inputs
 nix flake update
 
-# Update specific input only:
+# Update one input only
 nix flake update nixpkgs
 
-```
+# Generate hardware-config
+sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
 
-### NixOS
-
-```bash
-# Test the configuration without making it the boot default:
-sudo nixos-rebuild test --flake .#nds
-
-# Build the configuration without activating it:
-sudo nixos-rebuild build --flake .#nds
-
-# Build and activate the configuration, making it the boot default:
-sudo nixos-rebuild switch --flake .#nds
-
-# Rollback to previous generation:
+# Roll back current system generation
 sudo nixos-rebuild switch --rollback
-```
 
-### Home-Manager (MacOS)
-
-```bash
-# Build and activate without adding to profile:
-home-manager switch --flake .#sfikastheo
-
-# Rollback
+# Home Manager rollback flow
 home-manager generations
-/nix/store/xxx-home-manager-generation/activate
-
+/nix/store/<generation>-home-manager-generation/activate
 ```
