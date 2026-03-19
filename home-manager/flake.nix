@@ -11,16 +11,21 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      system = "aarch64-darwin";
-      user = "sfikastheo";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      cfg = system: user:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./${user} ];
+        };
     in {
-      homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./${user} ];
+      homeConfigurations = {
+        sfikastheo = cfg "aarch64-darwin" "sfikastheo";
+        wsuser-arm = cfg "aarch64-linux" "wsuser";
+        wsuser-x86 = cfg "x86_64-linux" "wsuser";
       };
     };
 }

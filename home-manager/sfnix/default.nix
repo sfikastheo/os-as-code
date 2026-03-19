@@ -50,10 +50,10 @@
     alacritty
     discord
     firefox
-    foliate
-    spotify
     podman-desktop
+    readest
     signal-desktop
+    spotify
     tor-browser
     unstable.zed-editor
 

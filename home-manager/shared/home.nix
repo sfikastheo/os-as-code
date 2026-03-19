@@ -64,7 +64,7 @@
     lldb
     lua-language-server
     nil
-    nixfmt-classic
+    nixfmt
     nodejs_24
     pnpm
     prettierd

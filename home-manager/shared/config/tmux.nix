@@ -4,12 +4,13 @@
   programs.tmux = {
     enable = true;
 
-    terminal = "screen-256color";
-    historyLimit = 50000;
-    focusEvents = true;
     clock24 = true;
+    focusEvents = true;
+    historyLimit = 50000;
     keyMode = "vi";
     mouse = true;
+    prefix = "C-b";
+    terminal = "screen-256color";
 
     plugins = with pkgs.tmuxPlugins; [
       {
@@ -26,11 +27,13 @@
     extraConfig = ''
       # general Settings
       set -ga terminal-features "xterm-256color:RGB"
+      set -g allow-passthrough on
       set -g set-clipboard on
 
-      set -g status-position top
+      set -g monitor-bell off
       set -g status-bg black
       set -g status-fg white
+      set -g status-position top
 
       # scratch session
       bind t display-popup -E \

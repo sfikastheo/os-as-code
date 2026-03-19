@@ -1,5 +1,5 @@
 {
-  description = "Nix Development System";
+  description = "NixOs Configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
@@ -21,7 +21,10 @@
             {
               nixpkgs.overlays = [
                 (final: prev: {
-                  unstable = nixpkgs-unstable.legacyPackages.${system};
+                  unstable = import nixpkgs-unstable {
+                    inherit system;
+                    config.allowUnfree = true;
+                  };
                 })
               ];
             }

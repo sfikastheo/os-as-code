@@ -71,6 +71,8 @@
     openFirewall = true;
   };
 
+  services.tailscale.enable = true;
+
   services.printing = {
     enable = true;
     drivers = with pkgs; [ cups-filters cups-browsed ];
