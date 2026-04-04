@@ -2,7 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, user, ... }: {
+{ pkgs, user, ... }:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -14,7 +15,10 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  nix.settings.trusted-users = [ "root" user ];
+  nix.settings.trusted-users = [
+    "root"
+    user
+  ];
 
   networking.hostName = "ws1";
   networking.networkmanager.enable = true;
@@ -75,18 +79,29 @@
 
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ cups-filters cups-browsed ];
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
   };
 
   # Define additional groups
-  users.groups = { i2c = { }; };
+  users.groups = {
+    i2c = { };
+  };
 
   programs.zsh.enable = true;
   users.users.${user} = {
     isNormalUser = true;
     description = user;
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "dialout" "i2c" "podman" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "dialout"
+      "i2c"
+      "podman"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJnx35WTioopNCzkzz0S8Kv/rmgBZTDl7Bdyynzpkxy theodore.sfikas@toolsforhumanity.com"
     ];
@@ -112,7 +127,10 @@
     preferStaticEmulators = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.variables.EDITOR = "nvim";
 
   # Some programs need SUID wrappers, can be configured further or are

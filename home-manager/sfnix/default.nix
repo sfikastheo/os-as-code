@@ -23,6 +23,7 @@
   imports = [ ../shared/home.nix ];
 
   fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     # Basics
     ldns

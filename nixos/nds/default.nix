@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, user, ... }: {
+{
+  pkgs,
+  user,
+  ...
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -14,7 +19,10 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  nix.settings.trusted-users = [ "root" user ];
+  nix.settings.trusted-users = [
+    "root"
+    user
+  ];
 
   networking.hostName = "nds";
   networking.networkmanager.enable = true;
@@ -89,16 +97,17 @@
     zsh
   ];
 
-  # Configure keymap
+  # Configure keymap - using US layout, kanata handles Colemak-DHM
   services.xserver.xkb = {
     layout = "us";
-    variant = "colemak_dh_ortho";
   };
 
-  services.udev.extraHwdb = ''
-    evdev:atkbd:*
-      KEYBOARD_KEY_3a=leftctrl
-  '';
+  services.udev = {
+    extraHwdb = ''
+      evdev:atkbd:*
+        KEYBOARD_KEY_3a=leftctrl
+    '';
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -116,22 +125,45 @@
     openFirewall = true;
   };
 
+  services.kanata = {
+    enable = true;
+    keyboards.remap = {
+      devices = [ ];
+      configFile =
+        let
+          kanataConfig = import ../../home-manager/shared/config/kanata-config.nix { inherit pkgs; };
+        in
+        pkgs.writeText "kanata.kbd" kanataConfig;
+    };
+  };
+
   services.tailscale.enable = true;
 
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ cups-filters cups-browsed ];
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
   };
 
   # Define additional groups
-  users.groups = { i2c = { }; };
+  users.groups = {
+    i2c = { };
+  };
 
   programs.zsh.enable = true;
   users.users.${user} = {
     isNormalUser = true;
     description = user;
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "dialout" "i2c" "podman" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "dialout"
+      "i2c"
+      "podman"
+    ];
   };
 
   # Allow unfree packages
@@ -162,7 +194,10 @@
     preferStaticEmulators = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.variables.EDITOR = "nvim";
 
   # Some programs need SUID wrappers, can be configured further or are

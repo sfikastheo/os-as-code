@@ -35,7 +35,10 @@
     enable = true;
     enableZshIntegration = true;
     defaultCommand = "rg --files --hidden --follow --no-ignore --glob '.git/*'";
-    defaultOptions = [ "--height 40%" "--reverse" ];
+    defaultOptions = [
+      "--height 40%"
+      "--reverse"
+    ];
   };
 
   programs.starship = {

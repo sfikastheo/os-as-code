@@ -27,8 +27,7 @@
         email = "theodore.sfikas@toolsforhumanity.com";
       };
 
-      gpg.ssh.allowedSignersFile =
-        "${config.home.homeDirectory}/.ssh/allowed_signers";
+      gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
 
       merge = {
         tool = "nvimdiff";
@@ -67,12 +66,9 @@
         me = "merge --no-edit";
         mu = "reset --merge";
 
-        lo =
-          "log -m --simplify-merges --color --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %Cblue%an <%ae>%Creset' --abbrev-commit";
-        lg =
-          "log --graph --date=short --decorate --first-parent --pretty=format:'%C(auto)%h %ad %d %s'";
-        lga =
-          "log --graph --date=short --decorate --all --pretty=format:'%C(auto)%h %ad %d %s'";
+        lo = "log -m --simplify-merges --color --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %Cblue%an <%ae>%Creset' --abbrev-commit";
+        lg = "log --graph --date=short --decorate --first-parent --pretty=format:'%C(auto)%h %ad %d %s'";
+        lga = "log --graph --date=short --decorate --all --pretty=format:'%C(auto)%h %ad %d %s'";
 
         df = "diff --color";
         dfs = "diff --staged --color";
@@ -88,8 +84,7 @@
 
         pl = "pull";
         plo = "pull origin";
-        plf = ''
-          !f() { git fetch origin "$1" && git reset --hard origin/"$1"; }; f'';
+        plf = ''!f() { git fetch origin "$1" && git reset --hard origin/"$1"; }; f'';
 
         a = "add";
         aa = "add --all";
@@ -124,8 +119,7 @@
         br = "branch";
         brd = "branch -D";
         bru = "branch --set-upstream";
-        brr =
-          "!git branch --set-upstream-to=origin/$(git branch --show-current)";
+        brr = "!git branch --set-upstream-to=origin/$(git branch --show-current)";
       };
 
     };

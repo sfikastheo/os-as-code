@@ -9,19 +9,23 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs =
+    { nixpkgs, home-manager, ... }:
     let
-      cfg = system: user:
+      cfg =
+        system: user:
         let
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
           };
-        in home-manager.lib.homeManagerConfiguration {
+        in
+        home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./${user} ];
         };
-    in {
+    in
+    {
       homeConfigurations = {
         sfikastheo = cfg "aarch64-darwin" "sfikastheo";
         wsuser-arm = cfg "aarch64-linux" "wsuser";

@@ -10,11 +10,23 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      ...
+    }:
     let
-      cfg = system: host: user:
-        let specialArgs = inputs // { inherit user nixpkgs-unstable; };
-        in nixpkgs.lib.nixosSystem {
+      cfg =
+        system: host: user:
+        let
+          specialArgs = inputs // {
+            inherit user nixpkgs-unstable;
+          };
+        in
+        nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
           modules = [
             ./nixos/${host}
@@ -37,7 +49,8 @@
             }
           ];
         };
-    in {
+    in
+    {
       nixosConfigurations = {
         fw13 = cfg "x86_64-linux" "nds" "sfnix";
         nuc01 = cfg "x86_64-linux" "ws1" "wsuser";

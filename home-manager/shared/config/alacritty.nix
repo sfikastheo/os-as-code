@@ -5,7 +5,8 @@ let
   openCommand = if isDarwin then "open" else "xdg-open";
   primaryMods = if isDarwin then "Command" else "Alt";
   fontSize = if isDarwin then "14" else "10";
-in {
+in
+{
   xdg.configFile."alacritty/alacritty.toml".text = ''
     [font]
     size = ${fontSize}
