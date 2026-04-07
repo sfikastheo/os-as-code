@@ -41,7 +41,7 @@
       };
 
       url = {
-        "ssh://github.com/worldcoin" = {
+        "ssh://git@github.com/worldcoin" = {
           insteadOf = "https://github.com/worldcoin";
         };
       };
