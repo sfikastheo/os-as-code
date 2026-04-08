@@ -59,19 +59,13 @@
     unstable.zed-editor
 
     # Work
-    _1password-cli
     _1password-gui
-    awscli2
-    cachix
-    cloudflared
+    efitools
+    sbsigntool
     efitools
     mongodb-compass
-    mongosh
-    picocom
     sbsigntool
     slack
-    ssm-session-manager-plugin
-    teleport_17
     zoom-us
 
     # Fonts

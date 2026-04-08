@@ -33,17 +33,16 @@
     devcontainer
     fd
     gh
+    helix
     jq
+    neovim
+    pre-commit
     ripgrep
     sshpass
     television
-    wget
-
-    # Terminal
-    helix
-    neovim
-    pre-commit
+    tio
     vim-full
+    wget
 
     # Tops
     btop
@@ -96,5 +95,14 @@
     claude-code
     codex
     gemini-cli
+
+    # Work
+    _1password-cli
+    awscli2
+    cachix
+    cloudflared
+    mongosh
+    ssm-session-manager-plugin
+    teleport_17
   ];
 }

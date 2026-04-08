@@ -48,17 +48,6 @@
     zsh
   ];
 
-  # Configure keymap
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "colemak_dh_ortho";
-  };
-
-  services.udev.extraHwdb = ''
-    evdev:atkbd:*
-      KEYBOARD_KEY_3a=leftctrl
-  '';
-
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -132,6 +121,11 @@
     "flakes"
   ];
   environment.variables.EDITOR = "nvim";
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    systemd
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -47,16 +47,8 @@
     runc
 
     # Work
-    _1password-cli
-    awscli2
-    cachix
-    cloudflared
     efitools
-    mongosh
-    picocom
     sbsigntool
-    ssm-session-manager-plugin
-    teleport_17
 
     # Fonts
     nerd-fonts.geist-mono

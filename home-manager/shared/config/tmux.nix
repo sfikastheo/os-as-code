@@ -35,6 +35,8 @@
       set -g status-fg white
       set -g status-position top
 
+      set -g update-environment "SSH_AUTH_SOCK"
+
       # scratch session
       bind t display-popup -E \
         -w 90% -h 90% \
