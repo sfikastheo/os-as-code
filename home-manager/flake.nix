@@ -7,10 +7,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      mac-app-util,
+      ...
+    }:
     let
       cfg =
         system: user:
@@ -19,15 +28,22 @@
             inherit system;
             config.allowUnfree = true;
           };
+          extraModules =
+            if system == "aarch64-darwin" then
+              [
+                mac-app-util.homeManagerModules.default
+              ]
+            else
+              [ ];
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./${user} ];
+          modules = extraModules ++ [ ./${user} ];
         };
     in
     {
       homeConfigurations = {
-        sfikastheo = cfg "aarch64-darwin" "sfikastheo";
+        m1pro = cfg "aarch64-darwin" "sfikastheo";
         wsuser-arm = cfg "aarch64-linux" "wsuser";
         wsuser-x86 = cfg "x86_64-linux" "wsuser";
       };

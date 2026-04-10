@@ -22,12 +22,28 @@
   imports = [ ../shared/home.nix ];
 
   home.packages = with pkgs; [
+    # Utils
+    iproute2mac
+    kanata
+
     # Applications
-    betterdisplay
+    #firefox
+    #podman-desktop
+    alacritty
     maccy
     rectangle
+    signal-desktop
+    spotify
 
-    # System tools
-    iproute2mac
+    # Work
+    #_1password-gui
+    #slack
+    mongodb-compass
+    zoom-us
+
+    # Fonts
+    nerd-fonts.geist-mono
   ];
+
+  fonts.fontconfig.enable = true;
 }

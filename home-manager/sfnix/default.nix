@@ -25,16 +25,14 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    # Basics
-    ldns
-    openssh
-    openssl
-
-    # System tools
+    # Utils
     ethtool
+    ldns
     lm_sensors
     lsof
     ltrace
+    openssh
+    openssl
     pciutils
     strace
     sysstat
@@ -62,9 +60,7 @@
     _1password-gui
     efitools
     sbsigntool
-    efitools
     mongodb-compass
-    sbsigntool
     slack
     zoom-us
 
