@@ -29,17 +29,17 @@
     # Applications
     #firefox
     #podman-desktop
-    alacritty
+    #alacritty
     maccy
     rectangle
-    signal-desktop
-    spotify
+    #signal-desktop
+    #spotify
 
     # Work
     #_1password-gui
     #slack
-    mongodb-compass
-    zoom-us
+    #mongodb-compass
+    #zoom-us
 
     # Fonts
     nerd-fonts.geist-mono

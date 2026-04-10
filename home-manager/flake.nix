@@ -7,17 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mac-app-util = {
-      url = "github:hraban/mac-app-util";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     {
       nixpkgs,
       home-manager,
-      mac-app-util,
       ...
     }:
     let
@@ -28,17 +23,10 @@
             inherit system;
             config.allowUnfree = true;
           };
-          extraModules =
-            if system == "aarch64-darwin" then
-              [
-                mac-app-util.homeManagerModules.default
-              ]
-            else
-              [ ];
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = extraModules ++ [ ./${user} ];
+          modules = [ ./${user} ];
         };
     in
     {
