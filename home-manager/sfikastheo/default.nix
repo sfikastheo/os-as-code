@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   home = {
@@ -18,6 +18,19 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  homebrew.casks = [
+    "alacritty"
+    "firefox"
+    "signal"
+    "slack"
+    "spotify"
+    "steam"
+    #"1password"
+    #"whatsapp"
+    #mongodb-compass
+    #"zoom"
+  ];
+
   # Import shared configuration
   imports = [ ../shared/home.nix ];
 
@@ -27,19 +40,9 @@
     kanata
 
     # Applications
-    #firefox
-    #podman-desktop
-    #alacritty
     maccy
+    podman
     rectangle
-    #signal-desktop
-    #spotify
-
-    # Work
-    #_1password-gui
-    #slack
-    #mongodb-compass
-    #zoom-us
 
     # Fonts
     nerd-fonts.geist-mono
