@@ -97,7 +97,6 @@
     zsh
   ];
 
-  # Configure keymap - using US layout, kanata handles Colemak-DHM
   services.xserver.xkb = {
     layout = "us";
   };
@@ -131,7 +130,7 @@
       devices = [ ];
       configFile =
         let
-          kanataConfig = import ../../home-manager/shared/config/kanata-config.nix { inherit pkgs; };
+          kanataConfig = import ../../home-manager/shared/kanata.nix { inherit pkgs; };
         in
         pkgs.writeText "kanata.kbd" kanataConfig;
     };

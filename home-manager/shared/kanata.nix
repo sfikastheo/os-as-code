@@ -31,10 +31,27 @@ let
     else
       "_    _    _    _    _    _    _    _    _    _    _    _    _";
 
+  # platform specific configurations
+  platformSpecificDefCfg =
+    if isDarwin then
+      ''
+        ;; kanata -l
+        macos-dev-names-exclude (
+          "ZSA Technology Labs Voyager"
+        )
+      ''
+    else
+      ''
+        ;; evtest
+        linux-dev-names-exclude (
+          "ZSA Technology Labs Voyager"
+        )
+      '';
 in
 ''
   (defcfg
     process-unmapped-keys no
+    ${platformSpecificDefCfg}
   )
 
 

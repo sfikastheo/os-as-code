@@ -1,5 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
+let
+  kanataConfig = import ../shared/kanata.nix { inherit pkgs; };
+in
 {
   home = {
     username = "sfikastheo";
@@ -47,6 +50,9 @@
     # Fonts
     nerd-fonts.geist-mono
   ];
+
+  # Setup Kanata
+  xdg.configFile."kanata/kanata.kbd".text = kanataConfig;
 
   fonts.fontconfig.enable = true;
 }
