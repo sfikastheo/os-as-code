@@ -37,19 +37,31 @@
 
       set -ga update-environment "SSH_AUTH_SOCK"
 
+      # unbind keys
+      unbind h
+      unbind j
+      unbind k
+      unbind l
+      unbind v
+      unbind o
+
+      # additional bindings
+      bind C-l clear-history
+
       # scratch session
       bind t display-popup -E \
         -w 90% -h 90% \
         -d "#{pane_current_path}" \
         tmux new-session -A -s scratch
 
-      # colemak-DH motions for pane navigation
-      unbind h
-      unbind j
-      unbind k
-      unbind l
-      unbind v
+      # pipe current pane in nvim
+      bind o run-shell '
+        t=$(mktemp /tmp/tmux-pane.XXXXXX) || exit 1
+        tmux capture-pane -p -S -10000 > "$t"
+        tmux display-popup -E -w 90% -h 90% "nvim \"+normal! G\" \"$t\""
+      '
 
+      # colemak-DH motions for pane navigation
       bind m select-pane -L
       bind n select-pane -D
       bind e select-pane -U
@@ -57,7 +69,6 @@
 
       bind u split-window -h
       bind l split-window -v
-      bind k next-window
 
       # copy mode
       bind v copy-mode
@@ -65,6 +76,7 @@
       bind -T copy-mode-vi v send -X begin-selection
       bind -T copy-mode-vi V send -X select-line
       bind -T copy-mode-vi C-v send -X rectangle-toggle
+      bind -T copy-mode-vi MouseDragEnd1Pane send -X stop-selection
 
       # unbind existing motions
       unbind -T copy-mode-vi h
@@ -89,9 +101,6 @@
       bind -T copy-mode-vi L send -X next-space-end
       bind -T copy-mode-vi C-n send -X halfpage-down
       bind -T copy-mode-vi C-e send -X halfpage-up
-
-      # don't auto-yank on mouse release — just keep the selection
-      bind -T copy-mode-vi MouseDragEnd1Pane send -X stop-selection
     '';
   };
 }
