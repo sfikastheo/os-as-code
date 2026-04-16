@@ -38,6 +38,10 @@
     sysstat
     usbutils
 
+    # Clipboard-Manager
+    cliphist
+    fuzzel
+
     # Containers
     dive
     fuse-overlayfs

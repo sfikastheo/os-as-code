@@ -52,22 +52,33 @@
   #};
 
   # KDE
-  services = {
-    desktopManager.plasma6.enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
-  };
+  #services = {
+  #  desktopManager.plasma6.enable = true;
+  #  displayManager.sddm.enable = true;
+  #  displayManager.sddm.wayland.enable = true;
+  #};
+  #environment.plasma6.excludePackages = with pkgs; [
+  #  kdePackages.elisa
+  #  kdePackages.kdepim-runtime
+  #  kdePackages.kmahjongg
+  #  kdePackages.kmines
+  #  kdePackages.konversation
+  #  kdePackages.kpat
+  #  kdePackages.ksudoku
+  #  kdePackages.ktorrent
+  #];
 
-  environment.plasma6.excludePackages = with pkgs; [
-    kdePackages.elisa
-    kdePackages.kdepim-runtime
-    kdePackages.kmahjongg
-    kdePackages.kmines
-    kdePackages.konversation
-    kdePackages.kpat
-    kdePackages.ksudoku
-    kdePackages.ktorrent
-  ];
+  # Cosmic
+  services = {
+    displayManager.cosmic-greeter.enable = true;
+    desktopManager.cosmic.enable = true;
+    system76-scheduler.enable = true;
+  };
+  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+  programs.firefox.preferences = {
+    # disable libadwaita theming for Firefox
+    "widget.gtk.libadwaita-colors.enabled" = false;
+  };
 
   environment.systemPackages = with pkgs; [
     # Wayland
@@ -198,6 +209,11 @@
     "flakes"
   ];
   environment.variables.EDITOR = "nvim";
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    systemd
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

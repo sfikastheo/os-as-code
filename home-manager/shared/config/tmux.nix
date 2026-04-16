@@ -18,7 +18,7 @@
         extraConfig = ''
           set -g @yank_action 'copy-pipe'
           set -g @yank_selection_mouse 'clipboard'
-          set -g @yank_with_mouse on
+          set -g @yank_with_mouse off
         '';
       }
       resurrect
@@ -35,7 +35,7 @@
       set -g status-fg white
       set -g status-position top
 
-      set -g update-environment "SSH_AUTH_SOCK"
+      set -ga update-environment "SSH_AUTH_SOCK"
 
       # scratch session
       bind t display-popup -E \
@@ -89,6 +89,9 @@
       bind -T copy-mode-vi L send -X next-space-end
       bind -T copy-mode-vi C-n send -X halfpage-down
       bind -T copy-mode-vi C-e send -X halfpage-up
+
+      # don't auto-yank on mouse release — just keep the selection
+      bind -T copy-mode-vi MouseDragEnd1Pane send -X stop-selection
     '';
   };
 }
