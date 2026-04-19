@@ -23,7 +23,7 @@ in
 
   homebrew.casks = [
     "alacritty"
-    "firefox"
+    "orion"
     "signal"
     "slack"
     "spotify"
