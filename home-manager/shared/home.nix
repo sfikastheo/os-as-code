@@ -33,6 +33,7 @@
     devcontainer
     fd
     gh
+    graphviz
     helix
     jq
     neovim
