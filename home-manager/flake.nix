@@ -44,6 +44,7 @@
     {
       homeConfigurations = {
         m1pro = cfg "aarch64-darwin" "sfikastheo";
+        m4max = cfg "aarch64-darwin" "theodore.sfikas";
         wsuser-arm = cfg "aarch64-linux" "wsuser";
         wsuser-x86 = cfg "x86_64-linux" "wsuser";
       };
