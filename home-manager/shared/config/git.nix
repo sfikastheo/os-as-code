@@ -116,6 +116,12 @@
         wtr = "worktree remove";
         wtm = "worktree move";
 
+        sm = "submodule";
+        smu = "submodule update --init --recursive";
+        sms = "submodule status";
+        sma = "submodule add";
+        smf = "submodule foreach";
+
         br = "branch";
         brd = "branch -D";
         bru = "branch --set-upstream";
