@@ -20,7 +20,7 @@
     }:
     let
       cfg =
-        system: host: user:
+        system: host: profile: user:
         let
           specialArgs = inputs // {
             inherit user nixpkgs-unstable;
@@ -45,15 +45,14 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = specialArgs;
-              home-manager.users.${user} = import ./home-manager/${user};
+              home-manager.users.${user} = import ./home-manager/${profile};
             }
           ];
         };
     in
     {
       nixosConfigurations = {
-        fw13 = cfg "x86_64-linux" "nds" "sfnix";
-        nuc01 = cfg "x86_64-linux" "ws1" "wsuser";
+        ds1 = cfg "x86_64-linux" "ds1" "base-linux" "wsuser";
       };
     };
 }

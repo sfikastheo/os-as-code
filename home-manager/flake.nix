@@ -22,7 +22,7 @@
     }:
     let
       cfg =
-        system: user:
+        system: profile: extraSpecialArgs:
         let
           pkgs = import nixpkgs {
             inherit system;
@@ -38,15 +38,15 @@
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = extraModules ++ [ ./${user} ];
+          inherit extraSpecialArgs;
+          modules = extraModules ++ [ ./${profile} ];
         };
     in
     {
       homeConfigurations = {
-        m1pro = cfg "aarch64-darwin" "sfikastheo";
-        m4max = cfg "aarch64-darwin" "theodore.sfikas";
-        wsuser-arm = cfg "aarch64-linux" "wsuser";
-        wsuser-x86 = cfg "x86_64-linux" "wsuser";
+        m1pro = cfg "aarch64-darwin" "m1-pro" { user = "sfikastheo"; };
+        m4max = cfg "aarch64-darwin" "m4-max" { user = "theodore.sfikas"; };
+        vps1 = cfg "aarch64-linux" "base-linux" { user = "wsuser"; };
       };
     };
 }

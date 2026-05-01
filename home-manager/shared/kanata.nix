@@ -37,7 +37,7 @@ let
       ''
         ;; kanata -l
         macos-dev-names-exclude (
-          "ZSA Technology Labs Voyager"
+          "Voyager"
         )
       ''
     else

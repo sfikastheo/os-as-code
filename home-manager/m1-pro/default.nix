@@ -1,12 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 
 let
   kanataConfig = import ../shared/kanata.nix { inherit pkgs; };
 in
 {
   home = {
-    username = "theodore.sfikas";
-    homeDirectory = "/Users/theodore.sfikas";
+    username = user;
+    homeDirectory = "/Users/${user}";
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new Home Manager release introduces backwards
@@ -23,17 +23,15 @@ in
 
   homebrew.casks = [
     "alacritty"
-    "chatgpt"
     "firefox"
-    "linear-linear"
-    "mongodb-compass"
+    "maccy"
+    "rectangle"
     "signal"
     "spotify"
+    "tailscale"
     "whatsapp"
-    #"steam"
-    #"slack"            # MDM
-    #"1password"        # MDM
-    #"zoom"             # MDM
+    "zoom"
+    "steam"
   ];
 
   # Import shared configuration
@@ -43,11 +41,7 @@ in
     # Utils
     iproute2mac
     kanata
-
-    # Applications
-    maccy
     podman
-    rectangle
 
     # Fonts
     nerd-fonts.geist-mono

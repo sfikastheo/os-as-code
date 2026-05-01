@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 
 {
   home = {
-    username = "wsuser";
-    homeDirectory = "/home/wsuser";
+    username = user;
+    homeDirectory = "/home/${user}";
     sessionVariables = {
       LANG = "en_US.UTF-8";
     };
@@ -23,18 +23,19 @@
   imports = [ ../shared/home.nix ];
 
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
-    # Basics
-    ldns
-    openssh
-    openssl
 
-    # System tools
+  home.packages = with pkgs; [
+    # Utils
+    efitools
     ethtool
+    ldns
     lm_sensors
     lsof
     ltrace
+    openssh
+    openssl
     pciutils
+    sbsigntool
     strace
     sysstat
     usbutils
@@ -45,10 +46,6 @@
     podman
     podman-compose
     runc
-
-    # Work
-    efitools
-    sbsigntool
 
     # Fonts
     nerd-fonts.geist-mono

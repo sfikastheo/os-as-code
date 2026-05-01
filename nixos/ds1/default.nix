@@ -2,7 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, user, ... }:
+{
+  pkgs,
+  user,
+  ...
+}:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -23,7 +27,6 @@
   networking.hostName = "ws1";
   networking.networkmanager.enable = true;
 
-  #time.timeZone = "America/Los_Angeles";
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -65,14 +68,6 @@
   };
 
   services.tailscale.enable = true;
-
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      cups-filters
-      cups-browsed
-    ];
-  };
 
   # Define additional groups
   users.groups = {

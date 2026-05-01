@@ -24,10 +24,9 @@
     user
   ];
 
-  networking.hostName = "nds";
+  networking.hostName = "ws0";
   networking.networkmanager.enable = true;
 
-  #time.timeZone = "America/Los_Angeles";
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -42,39 +41,15 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Gnome
-  #services = {
-  #  displayManager.gdm.enable = true;
-  #  desktopManager.gnome.enable = true;
-  #  gnome.core-developer-tools.enable = false;
-  #  gnome.core-apps.enable = false;
-  #  gnome.games.enable = false;
-  #};
-
-  # KDE
-  #services = {
-  #  desktopManager.plasma6.enable = true;
-  #  displayManager.sddm.enable = true;
-  #  displayManager.sddm.wayland.enable = true;
-  #};
-  #environment.plasma6.excludePackages = with pkgs; [
-  #  kdePackages.elisa
-  #  kdePackages.kdepim-runtime
-  #  kdePackages.kmahjongg
-  #  kdePackages.kmines
-  #  kdePackages.konversation
-  #  kdePackages.kpat
-  #  kdePackages.ksudoku
-  #  kdePackages.ktorrent
-  #];
-
   # Cosmic
   services = {
     displayManager.cosmic-greeter.enable = true;
     desktopManager.cosmic.enable = true;
     system76-scheduler.enable = true;
   };
+
   environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+
   programs.firefox.preferences = {
     # disable libadwaita theming for Firefox
     "widget.gtk.libadwaita-colors.enabled" = false;
@@ -85,20 +60,6 @@
     wayland-utils
     wl-clipboard
 
-    # KDE
-    kdePackages.kcalc
-    kdePackages.kclock
-    kdePackages.kcolorchooser
-    kdePackages.ksystemlog
-
-    # Gnome
-    # ddcutil
-    # gnome-calculator
-    # gnome-clocks
-    # gnomeExtensions.clipboard-indicator
-    # nautilus
-    # papers
-
     # Packages
     file
     gnutar
@@ -106,6 +67,25 @@
     usbutils
     vim-full
     zsh
+
+    # Graphical
+    # TODO: move under home-manager
+    # with a profiles of
+    # - workstation (ws)
+    # - dedicated server (ds)
+    # - virtual private server (vps)
+    alacritty
+    discord
+    firefox
+    signal-desktop
+    spotify
+    tor-browser
+    unstable.zed-editor
+    efitools
+    sbsigntool
+    mongodb-compass
+    slack
+    zoom-us
   ];
 
   services.xserver.xkb = {
