@@ -44,6 +44,8 @@ in
 
   home.packages = with pkgs; [
     # Utils
+    bash
+    coreutils
     iproute2mac
     podman
 
