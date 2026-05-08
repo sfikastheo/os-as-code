@@ -91,6 +91,7 @@
     gnupg
     gnused
     gnutar
+    openssl
     which
 
     # AI
