@@ -48,6 +48,7 @@ in
     coreutils
     iproute2mac
     podman
+    podman-compose
 
     # Fonts
     nerd-fonts.geist-mono
