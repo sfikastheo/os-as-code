@@ -24,7 +24,7 @@
     user
   ];
 
-  networking.hostName = "ws1";
+  networking.hostName = "ds1";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Berlin";
@@ -94,15 +94,16 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Enable podman
   virtualisation = {
-    containers.enable = true;
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
+    # Enable podman
+    # containers.enable = true;
+    # podman = {
+    #   enable = true;
+    #   dockerCompat = true;
+    #   dockerSocket.enable = true;
+    #   defaultNetwork.settings.dns_enabled = true;
+    # };
+    docker.enable = true;
   };
 
   # Cross architecture containers using binfmt/qemu
