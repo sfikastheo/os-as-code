@@ -80,7 +80,7 @@
     signal-desktop
     spotify
     tor-browser
-    unstable.zed-editor
+    zed-editor
     efitools
     sbsigntool
     mongodb-compass
