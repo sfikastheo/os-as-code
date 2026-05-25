@@ -105,6 +105,7 @@
     cachix
     cloudflared
     mongosh
+    protobuf
     ssm-session-manager-plugin
     teleport_17
   ];
