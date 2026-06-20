@@ -27,6 +27,7 @@ in
     "linear"
     "maccy"
     "mongodb-compass"
+    "nordvpn"
     "rectangle"
     "signal"
     "spotify"
