@@ -14,6 +14,24 @@ sudo nixos-rebuild switch --flake .#`system`
 home-manager switch --flake ./home-manager#`system`
 ```
 
+## Homebrew bundle
+
+Homebrew dependencies are managed per profile with a `Brewfile`.
+
+```bash
+# Install or reconcile Homebrew dependencies for a profile
+brew bundle install --file ./home-manager/`profile`/Brewfile
+
+# Check whether all Brewfile dependencies are installed
+brew bundle check --file ./home-manager/`profile`/Brewfile
+
+# Generate or refresh a Brewfile from the current machine state
+brew bundle dump --file ./home-manager/`profile`/Brewfile --force
+
+# Remove Homebrew dependencies not present in the Brewfile
+brew bundle cleanup --force --file ./home-manager/`profile`/Brewfile
+```
+
 ## Common maintenance
 
 ```bash

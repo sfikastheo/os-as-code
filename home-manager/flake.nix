@@ -7,17 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    homebrew = {
-      url = "github:koalalorenzo/home-manager-brew";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     {
       nixpkgs,
       home-manager,
-      homebrew,
       ...
     }:
     let
@@ -28,18 +23,11 @@
             inherit system;
             config.allowUnfree = true;
           };
-          extraModules =
-            if (system == "aarch64-darwin") then
-              [
-                homebrew.homeManagerModules.default
-              ]
-            else
-              [ ];
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           inherit extraSpecialArgs;
-          modules = extraModules ++ [ ./${profile} ];
+          modules = [ ./${profile} ];
         };
     in
     {

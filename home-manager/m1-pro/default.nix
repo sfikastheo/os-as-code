@@ -21,19 +21,6 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  homebrew.casks = [
-    "alacritty"
-    "firefox"
-    "maccy"
-    "rectangle"
-    "signal"
-    "spotify"
-    "tailscale"
-    "whatsapp"
-    "zoom"
-    "steam"
-  ];
-
   # Import shared configuration
   imports = [ ../shared/home.nix ];
 
