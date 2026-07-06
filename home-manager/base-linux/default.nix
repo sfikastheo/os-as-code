@@ -47,6 +47,11 @@
     podman-compose
     runc
 
+    # AI
+    claude-code
+    codex
+    gemini-cli
+
     # Fonts
     nerd-fonts.geist-mono
   ];

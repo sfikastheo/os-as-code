@@ -23,6 +23,8 @@ in
 
   homebrew.casks = [
     "alacritty"
+    "claude-code"
+    "codex"
     "firefox"
     "linear"
     "maccy"
@@ -32,12 +34,8 @@ in
     "signal"
     "spotify"
     "steam"
-    "tailscale-app"
     "tor-browser"
     "whatsapp"
-    #"slack"            # MDM
-    #"1password"        # MDM
-    #"zoom"             # MDM
   ];
 
   # Import shared configuration
@@ -53,6 +51,7 @@ in
 
     # Fonts
     nerd-fonts.geist-mono
+    darwin.libiconv
   ];
 
   # Setup Kanata
