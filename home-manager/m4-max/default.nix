@@ -34,9 +34,6 @@ in
     podman
     podman-compose
 
-    # Applications
-    netbird
-
     # Fonts
     nerd-fonts.geist-mono
     darwin.libiconv

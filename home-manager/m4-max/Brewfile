@@ -13,3 +13,6 @@ cask "spotify"
 cask "steam"
 cask "tor-browser"
 cask "whatsapp"
+
+tap "netbirdio/tap"
+brew "netbirdio/tap/netbird"
