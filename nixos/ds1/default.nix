@@ -67,7 +67,10 @@
     openFirewall = true;
   };
 
-  services.tailscale.enable = true;
+  services.teleport = {
+    enable = true;
+    package = pkgs.teleport_17;
+  };
 
   # Define additional groups
   users.groups = {

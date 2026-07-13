@@ -29,8 +29,13 @@ in
     bash
     coreutils
     iproute2mac
+
+    # Virtualization
     podman
     podman-compose
+
+    # Applications
+    netbird
 
     # Fonts
     nerd-fonts.geist-mono

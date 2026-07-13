@@ -127,8 +127,6 @@
     };
   };
 
-  services.tailscale.enable = true;
-
   services.printing = {
     enable = true;
     drivers = with pkgs; [
