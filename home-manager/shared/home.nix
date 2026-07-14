@@ -8,15 +8,15 @@
   };
 
   home.sessionPath = [
-    "$HOME/.pnpm"
     "$HOME/.bun/bin"
     "$HOME/.cargo/bin"
     "$HOME/.local/bin"
+    "$HOME/.pnpm/bin"
   ];
 
   home.file.".npmrc".text = ''
     store-dir=${config.home.homeDirectory}/.pnpm/store
-    global-bin-dir=${config.home.homeDirectory}/.pnpm
+    global-bin-dir=${config.home.homeDirectory}/.pnpm/bin
   '';
 
   imports = [ ./config ];
