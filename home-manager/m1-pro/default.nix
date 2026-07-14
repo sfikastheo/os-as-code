@@ -26,12 +26,17 @@ in
 
   home.packages = with pkgs; [
     # Utils
+    bash
+    coreutils
     iproute2mac
-    kanata
+
+    # Virtualization
     podman
+    podman-compose
 
     # Fonts
     nerd-fonts.geist-mono
+    darwin.libiconv
   ];
 
   # Setup Kanata
