@@ -74,11 +74,8 @@
 
   services.netbird.clients.wt0 = {
     ui.enable = false;
-    # Port used to listen to wireguard connections
     port = 51821;
-    # This opens ports required for direct connection without a relay
     openFirewall = true;
-    # This opens necessary firewall ports in the Netbird client's network interface
     openInternalFirewall = true;
   };
 
