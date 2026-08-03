@@ -98,18 +98,22 @@
 
     # Work
     _1password-cli
+    adb-sync
+    android-tools
     awscli2
     cachix
     cloudflared
-    mongosh
-    protobuf
-    ssm-session-manager-plugin
-    teleport_17
     gst_all_1.gst-devtools
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-ugly
     gst_all_1.gstreamer
+    mongosh
+    protobuf
+    rerun
+    scrcpy
+    ssm-session-manager-plugin
+    teleport_17
   ];
 }
