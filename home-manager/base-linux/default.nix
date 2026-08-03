@@ -35,6 +35,7 @@
     openssh
     openssl
     pciutils
+    qdl
     sbsigntool
     strace
     sysstat
