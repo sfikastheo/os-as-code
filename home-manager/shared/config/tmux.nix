@@ -26,7 +26,9 @@
 
     extraConfig = ''
       # general Settings
-      set -ga terminal-features "xterm-256color:RGB"
+      set -ga terminal-features "xterm-256color:RGB:clipboard"
+      ## If the `yank` plugin is not installed:
+      # set -s set-clipboard external
       set -g allow-passthrough on
       set -g set-clipboard on
 
@@ -77,6 +79,8 @@
       bind -T copy-mode-vi V send -X select-line
       bind -T copy-mode-vi C-v send -X rectangle-toggle
       bind -T copy-mode-vi MouseDragEnd1Pane send -X stop-selection
+      ## If the `yank` plugin is not installed:
+      # bind -T copy-mode-vi y send -X copy-selection-and-cancel
 
       # unbind existing motions
       unbind -T copy-mode-vi h
