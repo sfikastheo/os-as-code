@@ -147,6 +147,22 @@
     };
   };
 
+  systemd.services.dnclient = {
+    description = "Defined Networking Client";
+
+    wantedBy = [ "multi-user.target" ];
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+
+    serviceConfig = {
+      Type = "notify";
+      ExecStart = "/home/${user}/.local/bin/dnclient run -server https://api.defined.net";
+      StateDirectory = "defined";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
