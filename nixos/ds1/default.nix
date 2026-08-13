@@ -68,18 +68,6 @@
     openFirewall = true;
   };
 
-  services.teleport = {
-    enable = true;
-    package = pkgs.teleport_17;
-  };
-
-  services.netbird.clients.wt0 = {
-    ui.enable = false;
-    port = 51821;
-    openFirewall = true;
-    openInternalFirewall = true;
-  };
-
   # Define additional groups
   users.groups = {
     i2c = { };
@@ -164,8 +152,8 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
 
-  # SSH + Netbird were broken, test without
-  # Firewall momentarily
+  # `ssh` was broken.
+  # Test without firewall momentarily
   networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
