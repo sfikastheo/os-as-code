@@ -51,7 +51,6 @@
     iftop
 
     # Lang Tools
-    black
     bun
     cargo
     clang-tools
@@ -60,7 +59,7 @@
     gdb
     go
     gopls
-    isort
+    jdt-language-server
     lldb
     lua-language-server
     nil
