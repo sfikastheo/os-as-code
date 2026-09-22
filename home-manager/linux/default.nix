@@ -1,12 +1,13 @@
 { pkgs, user, ... }:
 
-let
-  kanataConfig = import ../shared/kanata.nix { inherit pkgs; };
-in
 {
   home = {
     username = user;
-    homeDirectory = "/Users/${user}";
+    homeDirectory = "/home/${user}";
+    sessionVariables = {
+      LANG = "en_US.UTF-8";
+    };
+
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new Home Manager release introduces backwards
@@ -18,29 +19,30 @@ in
     stateVersion = "25.05";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
   # Import shared configuration
   imports = [ ../shared/home.nix ];
 
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     # Utils
-    bash
-    coreutils
-    iproute2mac
-
-    # Virtualization
-    podman
-    podman-compose
+    codex
+    efitools
+    ethtool
+    ldns
+    lm_sensors
+    lsof
+    ltrace
+    openssh
+    openssl
+    pciutils
+    qdl
+    sbsigntool
+    strace
+    sysstat
+    usbutils
 
     # Fonts
     nerd-fonts.geist-mono
-    darwin.libiconv
   ];
-
-  # Setup Kanata
-  xdg.configFile."kanata/kanata.kbd".text = kanataConfig;
-
-  fonts.fontconfig.enable = true;
 }

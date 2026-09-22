@@ -32,9 +32,9 @@
     in
     {
       homeConfigurations = {
-        m1pro = cfg "aarch64-darwin" "m1-pro" { user = "sfikastheo"; };
-        m4max = cfg "aarch64-darwin" "m4-max" { user = "theodore.sfikas"; };
-        vps1 = cfg "aarch64-linux" "base-linux" { user = "wsuser"; };
+        m1pro = cfg "aarch64-darwin" "macos" { user = "sfikastheo"; };
+        m4max = cfg "aarch64-darwin" "macos" { user = "theodore.sfikas"; };
+        vps1 = cfg "aarch64-linux" "linux" { user = "wsuser"; };
       };
     };
 }

@@ -40,7 +40,8 @@
     in
     {
       nixosConfigurations = {
-        ds1 = cfg "x86_64-linux" "ds1" "base-linux" "wsuser";
+        ds1 = cfg "x86_64-linux" "ds1" "linux" "wsuser";
+        vm1 = cfg "aarch64-linux" "vm1" "linux" "dev";
       };
     };
 }
