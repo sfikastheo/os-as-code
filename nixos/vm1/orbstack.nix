@@ -52,11 +52,6 @@
   systemd.services."systemd-hostnamed".serviceConfig.WatchdogSec = 0;
   systemd.services."systemd-networkd".serviceConfig.WatchdogSec = lib.mkIf config.systemd.network.enable 0;
 
-  # ssh config
-  programs.ssh.extraConfig = ''
-    Include /opt/orbstack-guest/etc/ssh_config
-  '';
-
   # indicate builder support for emulated architectures
   nix.settings.extra-platforms = [
     "x86_64-linux"
