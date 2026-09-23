@@ -1,7 +1,7 @@
 { pkgs }:
 
 let
-  isDarwin = pkgs.stdenv.isDarwin;
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
 
   # special modifier key
   modKey = if isDarwin then "rmet" else "ralt";
