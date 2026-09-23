@@ -1,6 +1,4 @@
 cask "alacritty"
-cask "claude-code"
-cask "codex"
 cask "dnclient"
 cask "firefox"
 cask "linear"

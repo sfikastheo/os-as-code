@@ -26,8 +26,9 @@
     };
 
     initContent = ''
-      source "$HOME/Projects/secrets/wldrc"
-      source "$HOME/Projects/secrets/secrc"
+      if [[ -r "$HOME/.config/.rc.local" ]]; then
+        . "$HOME/.config/.rc.local"
+      fi
     '';
   };
 
