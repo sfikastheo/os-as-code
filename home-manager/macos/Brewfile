@@ -1,4 +1,5 @@
 cask "alacritty"
+cask "chatgpt"
 cask "dnclient"
 cask "firefox"
 cask "linear"
