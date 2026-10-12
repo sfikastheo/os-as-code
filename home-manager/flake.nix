@@ -35,6 +35,7 @@
         m1pro = cfg "aarch64-darwin" "macos" { user = "sfikastheo"; };
         m4max = cfg "aarch64-darwin" "macos" { user = "theodore.sfikas"; };
         vps1 = cfg "aarch64-linux" "linux" { user = "wsuser"; };
+        pixel-vault = cfg "x86_64-linux" "linux" { user = "theo"; };
       };
     };
 }
