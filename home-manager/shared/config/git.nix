@@ -17,7 +17,7 @@
     signing = {
       format = "ssh";
       signByDefault = true;
-      key = "${config.home.homeDirectory}/.ssh/signing_key";
+      key = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINDhJ/rDsgb8o6xZ9F5kmVnWzpQtO0eRSNhANIiREvkb";
     };
 
     settings = {
