@@ -3,6 +3,54 @@
 {
   home.file.".vimrc".text = ''
     " ------------------------------
+    " General Settings
+    " ------------------------------
+    " Initialization
+    set nocompatible
+    filetype plugin indent on
+
+    " Buffers and history
+    set hidden
+    set noswapfile
+    set undofile
+
+    " Display and searching
+    set hlsearch
+    set ignorecase
+    set incsearch
+    set laststatus=2
+    set relativenumber
+    set ruler
+    set scrolloff=8
+    set showcmd
+    set showmatch
+    set sidescrolloff=8
+    set smartcase
+    set splitbelow
+    set splitright
+    set wrap
+
+    " Editing
+    set clipboard=unnamedplus
+    set autoindent
+    set backspace=indent,eol,start
+    set expandtab
+    set hidden
+    set modelines=0
+    set shiftwidth=4
+    set smartindent
+    set softtabstop=4
+    set tabstop=4
+
+    if has("syntax")
+      syntax on
+    endif
+
+    if has('termguicolors')
+      set termguicolors
+    endif
+
+    " ------------------------------
     " Colemak DHm keymaps
     " ------------------------------
     noremap <silent> m h
@@ -74,38 +122,6 @@
     nnoremap <silent> <C-W>> 20<C-W>>
     nnoremap <silent> <C-W>- 20<C-W>-
     nnoremap <silent> <C-W>+ 20<C-W>+
-
-    " ------------------------------
-    " General Settings
-    " ------------------------------
-    set clipboard=unnamedplus
-    set relativenumber
-    set noswapfile
-    set undofile
-
-    set scrolloff=8
-    set sidescrolloff=8
-    set splitbelow
-    set splitright
-
-    set wrap
-    set expandtab
-    set autoindent
-    set smartindent
-    set shiftwidth=4
-    set softtabstop=4
-    set tabstop=4
-
-    set ignorecase
-    set smartcase
-
-    if has("syntax")
-      syntax on
-    endif
-
-    if has('termguicolors')
-      set termguicolors
-    endif
 
     " ------------------------------
     " Colorscheme
