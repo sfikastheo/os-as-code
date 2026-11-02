@@ -122,7 +122,7 @@
     " ------------------------------
     " Colorscheme
     " ------------------------------
-    colorscheme dalek
+    colorscheme habamax
     set background=dark
   '';
 }
