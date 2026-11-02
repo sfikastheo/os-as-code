@@ -46,10 +46,6 @@
       syntax on
     endif
 
-    if has('termguicolors')
-      set termguicolors
-    endif
-
     " ------------------------------
     " Colemak DHm keymaps
     " ------------------------------
@@ -126,7 +122,7 @@
     " ------------------------------
     " Colorscheme
     " ------------------------------
-    colorscheme retrobox
+    colorscheme dalek
     set background=dark
   '';
 }
