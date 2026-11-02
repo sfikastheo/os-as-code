@@ -5,7 +5,6 @@
     " ------------------------------
     " General Settings
     " ------------------------------
-    " Initialization
     set nocompatible
     filetype plugin indent on
 
@@ -31,7 +30,6 @@
     set wrap
 
     " Editing
-    set clipboard=unnamedplus
     set autoindent
     set backspace=indent,eol,start
     set expandtab
@@ -42,8 +40,20 @@
     set softtabstop=4
     set tabstop=4
 
+    " Clipboard
+    " (in TMUX: `set -s set-clipboard on`)
+    let g:osc52_force_avail = v:true
+    let g:osc52_disable_paste = v:true
+    packadd osc52
+    set clipmethod=osc52
+    set clipboard=unnamedplus
+
     if has("syntax")
-      syntax on
+        syntax on
+    endif
+
+    if has('termguicolors')
+        set termguicolors
     endif
 
     " ------------------------------
@@ -118,6 +128,30 @@
     nnoremap <silent> <C-W>> 20<C-W>>
     nnoremap <silent> <C-W>- 20<C-W>-
     nnoremap <silent> <C-W>+ 20<C-W>+
+
+    " ------------------------------
+    " Plugins
+    " ------------------------------
+    " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    "   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    " :PlugInstall
+
+    if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
+        call plug#begin()
+            Plug 'tpope/vim-surround'     " Manage surrounding pairs
+            Plug 'tpope/vim-repeat'       " Repeat plugin edits with .
+            Plug 'tpope/vim-fugitive'     " Git commands through :Git
+            Plug 'junegunn/fzf'           " Vim integration w/ fzf
+            Plug 'junegunn/fzf.vim'       " :Files, :Rg, :Buffers, :History
+            Plug 'preservim/nerdtree'     " File tree explorer with Space-p
+        call plug#end()
+
+        nnoremap <silent> <leader>. :Files<CR>
+        nnoremap <silent> <leader>, :Buffers<CR>
+        nnoremap <silent> <leader>fg :Rg<CR>
+        nnoremap <silent> <leader>ff :Files<CR>
+        nnoremap <silent> <leader>p :NERDTreeToggle<CR>
+    endif
 
     " ------------------------------
     " Colorscheme
