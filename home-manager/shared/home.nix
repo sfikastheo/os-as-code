@@ -112,6 +112,6 @@
     rerun
     scrcpy
     ssm-session-manager-plugin
-    teleport_17
+    teleport_18
   ];
 }
