@@ -75,6 +75,7 @@
     rustfmt
     taplo
     tree-sitter
+    ty
     typescript-language-server
     uv
     zig
