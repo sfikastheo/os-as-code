@@ -27,8 +27,6 @@
     extraConfig = ''
       # general Settings
       set -ga terminal-features "xterm-256color:RGB:clipboard"
-      ## If the `yank` plugin is not installed:
-      # set -s set-clipboard external
       set -g allow-passthrough on
       set -g set-clipboard on
 
@@ -105,6 +103,10 @@
       bind -T copy-mode-vi L send -X next-space-end
       bind -T copy-mode-vi C-n send -X halfpage-down
       bind -T copy-mode-vi C-e send -X halfpage-up
+
+      ## No HomeManager/Plugins/Remote:
+      # set -g mouse on
+      # set -g mode-keys vi
     '';
   };
 }
